@@ -23,7 +23,7 @@ export default function Modal({
   const [curIndex, setCurIndex] = useState(index);
 
   function handleClose() {
-    router.push("/", undefined, { shallow: true });
+    router.push("/image", undefined, { shallow: true });
     onClose();
   }
 
