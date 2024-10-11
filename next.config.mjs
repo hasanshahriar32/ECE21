@@ -1,9 +1,17 @@
 /** @type {import('next').NextConfig} */
 const config = {
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { hostname: 'cdn.sanity.io' },
       { hostname: 'source.unsplash.com' },
+      { hostname: 'res.cloudinary.com' },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/my-account/**',
+      },
     ],
   },
   typescript: {
