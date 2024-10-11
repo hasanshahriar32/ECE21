@@ -28,6 +28,16 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+          
+      type: "array",
+      name: "cloudinaryList",
+      description: "Select images to add to the gallery. (not mandetory)",
+      of: [{ type: "cloudinary.asset" }],
+      title: "Gallery",
+
+  
+    }),
+    defineField({
       name: 'overview',
       description:
         'Used both for the <meta> description tag for SEO, and project subheader.',

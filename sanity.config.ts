@@ -8,6 +8,8 @@ import { defineConfig } from 'sanity'
 import { presentationTool } from 'sanity/presentation'
 import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
+import { cloudinaryAssetSourcePlugin } from 'sanity-plugin-cloudinary'
+import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
 
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import * as resolve from '@/sanity/plugins/resolve'
@@ -45,6 +47,8 @@ export default defineConfig({
     ],
   },
   plugins: [
+    cloudinaryAssetSourcePlugin(),
+    cloudinarySchemaPlugin(),
     structureTool({
       structure: pageStructure([home, settings]),
     }),
@@ -64,4 +68,20 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
+  form: {
+    image: {
+      assetSources: (previousAssetSources, context) => {
+        if (context.currentUser?.roles.includes('cloudinaryAccess')) {
+          // appends cloudinary as an asset source
+          return [...previousAssetSources, cloudinaryImageSource]
+        }
+        if (context.currentUser?.roles.includes('onlyCloudinaryAccess')) {
+          // only use clooudinary as an asset source
+          return [cloudinaryImageSource]
+        }
+        // dont add cloudnary as an asset sources
+        return previousAssetSources
+      },
+    },
+  },
 })
