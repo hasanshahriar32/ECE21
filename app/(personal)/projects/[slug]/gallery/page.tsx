@@ -1,5 +1,7 @@
+import { DoubleArrowLeftIcon, Share1Icon } from '@radix-ui/react-icons'
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 
 import Gallery from "@/components/pages/project/Gallery";
 import { loadProject } from "@/sanity/loader/loadQuery";
@@ -12,11 +14,8 @@ type Props = {
   params: { slug: string }
 }
 
-const Home: NextPage = async ({ params }: Props) => {
+const Home: NextPage = async ({ params }: Props,) => {
   const initial = await loadProject(params.slug)
-  console.log(initial)
-  const images = initial?.data?.cloudinaryList
-  console.log(images)
 
 
   return (
@@ -33,9 +32,20 @@ const Home: NextPage = async ({ params }: Props) => {
         />
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
-        
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
           <div className="after:content relative mb-5 flex h-[629px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/90 px-6 pb-16 pt-64 text-center shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
+            <Link
+              className="pointer z-10 mt-6 rounded-lg border absolute top-2 left-2 border-black bg-black px-3 py-2 text-sm font-semibold text-white transition hover:bg-black/10 hover:text-black md:mt-4"
+              href={`/projects/${params.slug}`}
+              rel="noreferrer"
+            >
+              <div className="flex group flex-row gap-2 items-center justify-between">
+                <DoubleArrowLeftIcon className=" group-hover:translate-x-[-5px] transition-transform" />
+                <span className=" group-hover:translate-x-[-5px] transition-transform">
+                  Return
+                </span>
+              </div>
+            </Link>
             <div className="absolute inset-0 flex items-center justify-center opacity-20">
               <span className="flex px-2 max-h-full max-w-full items-center justify-center">
                 <Bridge />
@@ -46,17 +56,16 @@ const Home: NextPage = async ({ params }: Props) => {
             <h1 className="mt-8 mb-4 text-base font-bold uppercase tracking-widest">
               {initial?.data?.title || 'Rinattok21: Images'}
             </h1>
-            <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch]">
+            <p className="max-w-[40ch] text-black/75 sm:max-w-[32ch]">
               Our incredible Next.js community got together in San Francisco for
               our first ever in-person conference!
             </p>
             <a
               className="pointer z-10 mt-6 rounded-lg border border-black bg-black px-3 py-2 text-sm font-semibold text-white transition hover:bg-black/10 hover:text-black md:mt-4"
-              href="https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application"
-              target="_blank"
+              href="#"
               rel="noreferrer"
             >
-              Clone and Deploy
+              Share <Share1Icon className="inline-block ml-1" />
             </a>
           </div>
           <Gallery data={initial?.data} />

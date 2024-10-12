@@ -3,10 +3,10 @@ import Image from 'next/image';
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view'
 
-import getBase64ImageUrl from '@/utils/generateBlurPlaceholder';
+// import getBase64ImageUrl from '@/utils/generateBlurPlaceholder';
 const Gallery = ({data}:any) => {
     const images = data?.cloudinaryList;
-    console.log(images);
+    // console.log(images);
     return (
       <div>
         <PhotoProvider
