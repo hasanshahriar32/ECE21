@@ -50,7 +50,7 @@ const Gallery = ({ data }: any) => {
                 variant={'ghost'}
                 onClick={() => {
                   if (activeImage) {
-                    downloadPhoto(activeImage?.url, `${activeImage?.public_id}.${activeImage?.format}`)
+                    downloadPhoto(activeImage?.secure_url, `${activeImage?.public_id}.${activeImage?.format}`)
                   }
                 }}
               >
