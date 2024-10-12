@@ -24,7 +24,7 @@ import settings from '@/sanity/schemas/singletons/settings'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Next.js Personal Website with Sanity.io'
+  'Rinattok21 - HSTU ECE 21 Batch'
 
 export default defineConfig({
   basePath: studioUrl,

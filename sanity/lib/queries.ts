@@ -34,6 +34,7 @@ export const projectBySlugQuery = groq`
     description,
     duration,
     overview,
+    cloudinaryList,
     site,
     "slug": slug.current,
     tags,

@@ -22,7 +22,11 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
     site,
     tags,
     title,
+    cloudinaryList,
   } = data ?? {}
+
+  console.log('data', data)
+  console.log(data?.cloudinaryList)
 
   const startYear = new Date(duration?.start!).getFullYear()
   const endYear = duration?.end ? new Date(duration?.end).getFullYear() : 'Now'

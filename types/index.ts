@@ -48,6 +48,7 @@ export interface ProjectPayload {
   client?: string
   coverImage?: Image
   description?: PortableTextBlock[]
+  cloudinaryList?: any
   duration?: {
     start?: string
     end?: string
