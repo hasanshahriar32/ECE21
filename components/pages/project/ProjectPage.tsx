@@ -5,6 +5,7 @@ import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
 import ImageBox from '@/components/shared/ImageBox'
 import type { ProjectPayload } from '@/types'
+import { VortexUi } from './VortexUi'
 
 export interface ProjectPageProps {
   data: ProjectPayload | null
@@ -110,6 +111,7 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
           />
         )}
       </div>
+      <VortexUi />
       <div className="absolute left-0 w-screen border-t" />
     </div>
   )
