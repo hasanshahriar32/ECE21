@@ -6,6 +6,7 @@ import { Header } from '@/components/shared/Header'
 import ImageBox from '@/components/shared/ImageBox'
 import type { ProjectPayload } from '@/types'
 import { VortexUi } from './VortexUi'
+import DisqusLoader from './DisqusLoader'
 
 export interface ProjectPageProps {
   data: ProjectPayload | null
@@ -112,7 +113,8 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
         )}
       </div>
       <VortexUi />
-      <div className="absolute left-0 w-screen border-t" />
+      <div className="absolute left-0 w-screen my-6 border-t" />
+      <DisqusLoader data={data} />
     </div>
   )
 }
