@@ -1,6 +1,7 @@
 import { DoubleArrowLeftIcon, Share1Icon } from '@radix-ui/react-icons'
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from 'next/image';
 import Link from "next/link";
 
 import Gallery from "@/components/pages/project/Gallery";
@@ -33,8 +34,8 @@ const Home: NextPage = async ({ params }: Props,) => {
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
-          <div className="after:content relative mb-5 flex h-[629px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/90 px-6 pb-16 pt-64 text-center shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
-            <Link
+          <div className="after:content relative mb-5 flex h-[540px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/90 px-6 pb-16 pt-64 text-center shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
+            <a
               className="pointer z-10 mt-6 rounded-lg border absolute top-2 left-2 border-black bg-black px-3 py-2 text-sm font-semibold text-white transition hover:bg-black/10 hover:text-black md:mt-4"
               href={`/projects/${params.slug}`}
               rel="noreferrer"
@@ -45,23 +46,31 @@ const Home: NextPage = async ({ params }: Props,) => {
                   Return
                 </span>
               </div>
-            </Link>
+            </a>
             <div className="absolute inset-0 flex items-center justify-center opacity-20">
-              <span className="flex px-2 max-h-full max-w-full items-center justify-center">
+              <span className="flex relative bottom-20 px-2 max-h-full max-w-full items-center justify-center">
                 <Bridge />
               </span>
               <span className="absolute left-0 right-0 bottom-0 h-[400px] bg-gradient-to-b from-black/0 via-black to-black"></span>
             </div>
-            <Logo />
+            {/* <Logo /> */}
+            <div className=''>
+              <Image
+                src="/logo.jpg"
+                width={120}
+                className=""
+                height={120}
+                alt=""
+              />
+            </div>
             <h1 className="mt-8 mb-4 text-base font-bold uppercase tracking-widest">
               {initial?.data?.title || 'Rinattok21: Images'}
             </h1>
-            <p className="max-w-[40ch] text-black/75 sm:max-w-[32ch]">
-              Our incredible Next.js community got together in San Francisco for
-              our first ever in-person conference!
+            <p className="max-w-[40ch] hidden sm:block text-black/75 sm:max-w-[32ch]">
+              {'A collection of images from Rinattok21. Please enjoy the images and share them with your friends.'}
             </p>
             <a
-              className="pointer z-10 mt-6 rounded-lg border border-black bg-black px-3 py-2 text-sm font-semibold text-white transition hover:bg-black/10 hover:text-black md:mt-4"
+              className="pointer z-0 mt-6 rounded-lg border border-black bg-black px-3 py-2 text-sm font-semibold text-white transition hover:bg-black/10 hover:text-black md:mt-4"
               href="#"
               rel="noreferrer"
             >

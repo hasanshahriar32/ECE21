@@ -1,63 +1,93 @@
-"use client";
-import Image from 'next/image';
-import React from 'react';
+'use client'
+import {
+  DownloadIcon,
+  RotateCounterClockwiseIcon,
+  ZoomInIcon,
+  ZoomOutIcon,
+} from '@radix-ui/react-icons'
+import Image from 'next/image'
+import React, { useState } from 'react'
 import { PhotoProvider, PhotoView } from 'react-photo-view'
 
-// import getBase64ImageUrl from '@/utils/generateBlurPlaceholder';
-const Gallery = ({data}:any) => {
-    const images = data?.cloudinaryList;
-    // console.log(images);
-    return (
-      <div>
-        <PhotoProvider
-          toolbarRender={({ onScale, scale, rotate, onRotate }) => {
-            return (
-              <>
-                <button onClick={() => onScale(scale + 1)}>zoom</button>
-                <svg
-                  className="PhotoView-Slider__toolbarIcon"
-                  onClick={() => onScale(scale - 1)}
-                />
-                <svg
-                  className="PhotoView-Slider__toolbarIcon"
-                  onClick={() => onRotate(rotate + 90)}
-                />
-              </>
-            )
-          }}
-        >
-          {images?.map(async ({ id, public_id, format, url }) => (
-            <div
-              key={id}
-              className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
+import { Button } from '@/components/ui/button'
+import downloadPhoto from '@/utils/downloadPhoto'
+
+const Gallery = ({ data }: any) => {
+  const images = data?.cloudinaryList
+  const [activeImage, setActiveImage] = useState<any>(null)
+
+  return (
+    <div>
+      <PhotoProvider
+      onIndexChange={(index) => setActiveImage(images[index])}
+        toolbarRender={({ onScale, scale, rotate, onRotate }) => {
+          return (
+            <>
+              <Button
+                size={'icon'}
+                variant={'ghost'}
+                onClick={() => onScale(scale + 1)}
+              >
+                <ZoomInIcon />
+              </Button>
+              <Button
+                size={'icon'}
+                variant={'ghost'}
+                onClick={() => onScale(scale - 1)}
+              >
+                <ZoomOutIcon />
+              </Button>
+
+              <Button
+                size={'icon'}
+                variant={'ghost'}
+                onClick={() => onRotate(rotate + 90)}
+              >
+                <RotateCounterClockwiseIcon />
+              </Button>
+              <Button
+                size={'icon'}
+                variant={'ghost'}
+                onClick={() => {
+                  if (activeImage) {
+                    downloadPhoto(activeImage?.url, `${activeImage?.public_id}.${activeImage?.format}`)
+                  }
+                }}
+              >
+                <DownloadIcon />
+              </Button>
+            </>
+          )
+        }}
+      >
+        {images?.map(({ id, public_id, format, url }: any) => (
+          <div
+            key={id}
+            className="group relative mb-5 block w-full cursor-zoom-in"
             >
-              <div className="foo">
-                <PhotoView
-                  key={id}
-                  src={`${url}`}
-                >
-                  <Image
-                    alt="Next.js Conf photo"
-                    className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                    style={{ transform: 'translate3d(0, 0, 0)' }}
-                    placeholder="blur"
-                    //   blurDataURL={await getBase64ImageUrl({ public_id, format })}
-                    blurDataURL="https://res.cloudinary.com/rinattok21/image/upload/c_scale,w_8,q_70/v1635730000/nextjsconf-pics/1.jpg"
-                    src={`${url}`}
-                    width={720}
-                    height={480}
-                    sizes="(max-width: 640px) 100vw,
+            <PhotoView
+              key={id}
+              src={url}
+            >
+              <Image
+                alt="Next.js Conf photo"
+                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                placeholder="blur"
+                blurDataURL="https://res.cloudinary.com/rinattok21/image/upload/c_scale,w_8,q_70/v1635730000/nextjsconf-pics/1.jpg"
+                src={url}
+                width={720}
+                height={480}
+                sizes="(max-width: 640px) 100vw,
               (max-width: 1280px) 50vw,
               (max-width: 1536px) 33vw,
               25vw"
-                  />
-                </PhotoView>
-              </div>
-            </div>
-          ))}
-        </PhotoProvider>
-      </div>
-    )
-};
+              />
+            </PhotoView>
+          </div>
+        ))}
+      </PhotoProvider>
+    </div>
+  )
+}
 
-export default Gallery;
+export default Gallery
