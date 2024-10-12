@@ -1,4 +1,5 @@
 import '@/styles/index.css'
+import 'react-photo-view/dist/react-photo-view.css'
 
 import type { Metadata, Viewport } from 'next'
 import dynamic from 'next/dynamic'

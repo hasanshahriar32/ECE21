@@ -1,17 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-// import { useRouter } from "next/navigation";
-// import { useEffect, useRef } from "react";
+
+import Gallery from "@/components/pages/project/Gallery";
+import { loadProject } from "@/sanity/loader/loadQuery";
+
 import Bridge from "../../../../../components/Icons/Bridge";
 import Logo from "../../../../../components/Icons/Logo";
-import Modal from "../../../../../components/Modal2";
-import cloudinary from "../../../../../utils/cloudinary";
-import getBase64ImageUrl from "../../../../../utils/generateBlurPlaceholder";
-import type { ImageProps } from "../../../../../utils/types";
-// import { useLastViewedPhoto } from "../../../../../utils/useLastViewedPhoto";
-import { loadProject } from "@/sanity/loader/loadQuery";
 
 
 type Props = {
@@ -24,20 +18,6 @@ const Home: NextPage = async ({ params }: Props) => {
   const images = initial?.data?.cloudinaryList
   console.log(images)
 
-  // const router = useRouter();
-  // const { photoId } = router?.query;
-  const photoId = '1'
-  // const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto()
-
-  // const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null)
-
-  // useEffect(() => {
-  //   // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
-  //   if (lastViewedPhoto && !photoId) {
-  //     lastViewedPhotoRef?.current?.scrollIntoView({ block: 'center' })
-  //     setLastViewedPhoto(null)
-  //   }
-  // }, [photoId, lastViewedPhoto, setLastViewedPhoto])
 
   return (
     <>
@@ -53,18 +33,11 @@ const Home: NextPage = async ({ params }: Props) => {
         />
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
-        {/* {photoId && (
-          <Modal
-            images={images}
-            onClose={() => {
-              setLastViewedPhoto(photoId);
-            }}
-          />
-        )} */}
+        
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
           <div className="after:content relative mb-5 flex h-[629px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/90 px-6 pb-16 pt-64 text-center shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
             <div className="absolute inset-0 flex items-center justify-center opacity-20">
-              <span className="flex max-h-full max-w-full items-center justify-center">
+              <span className="flex px-2 max-h-full max-w-full items-center justify-center">
                 <Bridge />
               </span>
               <span className="absolute left-0 right-0 bottom-0 h-[400px] bg-gradient-to-b from-black/0 via-black to-black"></span>
@@ -86,32 +59,7 @@ const Home: NextPage = async ({ params }: Props) => {
               Clone and Deploy
             </a>
           </div>
-          {images?.map(({ id, public_id, format }) => (
-            <Link
-              key={id}
-              href={`/image?photoId=${id}`}
-              as={`/p/${id}`}
-              // ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-              shallow
-              className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
-            >
-              <Image
-                alt="Next.js Conf photo"
-                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                style={{ transform: 'translate3d(0, 0, 0)' }}
-                placeholder="blur"
-                // blurDataURL={await getBase64ImageUrl({ public_id, format })}
-                blurDataURL="https://res.cloudinary.com/rinattok21/image/upload/c_scale,w_8,q_70/v1635730000/nextjsconf-pics/1.jpg"
-                src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
-                width={720}
-                height={480}
-                sizes="(max-width: 640px) 100vw,
-                  (max-width: 1280px) 50vw,
-                  (max-width: 1536px) 33vw,
-                  25vw"
-              />
-            </Link>
-          ))}
+          <Gallery data={initial?.data} />
         </div>
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
