@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers'
 
 import { client } from '@/sanity/lib/client'
 import {
+  allProjectSlugQuery,
   homePageQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
@@ -83,6 +84,13 @@ export function loadProject(slug: string) {
     projectBySlugQuery,
     { slug },
     { next: { tags: [`project:${slug}`] } },
+  )
+}
+export function loadAllProject(page: number, limit: number) {
+  return loadQuery<any>(
+    allProjectSlugQuery(page, limit), // Pass the page and limit parameters to the query
+    {},
+    { next: { tags: [`project`], revalidate: 1800 } },
   )
 }
 

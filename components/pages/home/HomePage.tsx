@@ -2,20 +2,22 @@ import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
 import Link from 'next/link'
 
 import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
+import AllProjects from '@/components/shared/allProjects'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
 
+import { Gemini } from './Gemini'
 import { GlobeView } from './GlobeView'
 import { TimelineShowcase } from './TimelineShowcase'
-import { Gemini } from './Gemini'
 
 export interface HomePageProps {
   data: HomePagePayload | null
+  data2: any
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
+export function HomePage({ data, data2, encodeDataAttribute }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
 
@@ -48,6 +50,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
         </div>
       )}
       <TimelineShowcase />
+      <AllProjects data2={data2} />
       <Gemini />
       <GlobeView />
     </div>

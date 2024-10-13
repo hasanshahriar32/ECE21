@@ -41,6 +41,22 @@ export const projectBySlugQuery = groq`
     title,
   }
 `
+export const allProjectSlugQuery = (page: number, limit: number) => groq`
+  *[_type == "project"] | order(_updatedAt desc)[${(page - 1) * limit}...${
+    page * limit
+  }] {
+    _id,
+    client,
+    coverImage,
+    duration,
+    overview,
+    site,
+    "slug": slug.current,
+    tags,
+    title,
+    _updatedAt
+  }
+`
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
