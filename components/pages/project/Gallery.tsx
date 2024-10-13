@@ -73,7 +73,7 @@ const Gallery = ({ data }: any) => {
                 alt="Next.js Conf photo"
                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                 placeholder="blur"
-                blurDataURL="https://res.cloudinary.com/rinattok21/image/upload/c_scale,w_8,q_70/v1635730000/nextjsconf-pics/1.jpg"
+                blurDataURL="https://res.cloudinary.com/ঋণাত্মক - ২১/image/upload/c_scale,w_8,q_70/v1635730000/nextjsconf-pics/1.jpg"
                 src={url}
                 width={720}
                 height={480}

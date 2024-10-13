@@ -28,8 +28,8 @@ const PwaInstall = () => {
   }, []);
   const handleEmailOpen = (event) => {
     event.preventDefault();
-    window.location.href = "mailto:rinattok21@gmail.com";
-    
+    window.location.href = "mailto:ঋণাত্মক - ২১@gmail.com";
+
   };
   const handleInstallClick = (event) => {
     event.preventDefault();

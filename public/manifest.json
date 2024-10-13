@@ -3,7 +3,7 @@
   "display_override": ["window-controls-overlay"],
   "protocol_handlers": [{ "protocol": "mailto", "url": "/newEmail?to=%s" }],
   "name": "HSTU ECE21",
-  "short_name": "RINATTOK21",
+  "short_name": "ঋণাত্মক - ২১",
   "description": "Documentary of HSTU ECE21 Batch. A project by Shahriar Hasan.",
   "theme_color": "#000000",
   "background_color": "#FFFFFF",

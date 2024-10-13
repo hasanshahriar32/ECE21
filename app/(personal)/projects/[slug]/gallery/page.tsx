@@ -29,7 +29,7 @@ const Home: NextPage = async ({ params }: Props,) => {
   return (
     <>
       <Head>
-        <title>Rinattok21: Images</title>
+        <title>ঋণাত্মক - ২১: Images</title>
         <meta
           property="og:image"
           content="https://nextjsconf-pics.vercel.app/og-image.png"
@@ -71,11 +71,11 @@ const Home: NextPage = async ({ params }: Props,) => {
               />
             </div>
             <h1 className="mt-8 mb-4 text-base font-bold uppercase tracking-widest">
-              {initial?.data?.title || 'Rinattok21: Images'}
+              {initial?.data?.title || 'ঋণাত্মক - ২১: Images'}
             </h1>
             <p className="max-w-[40ch] font-extralight text-xs md:text-base text-black/75 sm:max-w-[32ch]">
               {
-                'A collection of images from Rinattok21. Please enjoy the images and share them with your friends.'
+                'A collection of images from ঋণাত্মক - ২১. Please enjoy the images and share them with your friends.'
               }
             </p>
             <a

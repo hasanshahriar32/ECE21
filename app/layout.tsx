@@ -21,10 +21,10 @@ const mono = IBM_Plex_Mono({
   weight: ['500', '700'],
 })
 
-const APP_NAME = 'Rinattok21'
-const APP_DEFAULT_TITLE = 'Rinattok21'
-const APP_TITLE_TEMPLATE = 'Rinattok21 - PWA App'
-const APP_DESCRIPTION = 'A documentary application of HSTU: ECE21 batch! Bought to you by Rinattok21.'
+const APP_NAME = 'ঋণাত্মক - ২১'
+const APP_DEFAULT_TITLE = 'ঋণাত্মক - ২১'
+const APP_TITLE_TEMPLATE = 'ঋণাত্মক - ২১ - PWA App'
+const APP_DESCRIPTION = 'A documentary application of HSTU: ECE21 batch! Bought to you by ঋণাত্মক - ২১.'
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 export function SparklesView() {
   const [showRinattok, setShowRinattok] = useState(true)
 
-  // Effect to toggle between Rinattok21 and Get App button every 2 seconds
+  // Effect to toggle between ঋণাত্মক - ২১ and Get App button every 2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setShowRinattok((prev) => !prev)

@@ -24,7 +24,7 @@ import settings from '@/sanity/schemas/singletons/settings'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Rinattok21 - HSTU ECE 21 Batch'
+  'ঋণাত্মক - ২১ - HSTU ECE 21 Batch'
 
 export default defineConfig({
   basePath: studioUrl,
