@@ -15,6 +15,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@ducanh2912/next-pwa": "^10.2.9",
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "@next/env": "14.2.13",
