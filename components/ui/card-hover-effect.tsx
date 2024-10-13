@@ -4,7 +4,7 @@ import { CommentIcon } from '@sanity/icons'
 import { CommentCount } from 'disqus-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
-import { useEffect,useState } from 'react'
+import { Suspense, useEffect,useState } from 'react'
 
 import ImageBox from '@/components/shared/ImageBox'
 import {
@@ -75,7 +75,7 @@ export const HoverEffect = ({
       >
         {visibleItems?.map((item: any, idx: any) => (
           <Link
-            href={`/blog/post/${item?.slug}`}
+            href={`/projects/${item?.slug}`}
             key={item?._id}
             className="group relative  block h-full w-full p-2"
             onMouseEnter={() => setHoveredIndex(idx)}
@@ -109,28 +109,34 @@ export const HoverEffect = ({
               <CardTitle>{item?.title}</CardTitle>
               <div className="-mt-5 flex items-center justify-end gap-2 font-mono text-xs text-slate-500">
                 <CommentIcon />
-                <CommentCount
-                  shortname="hstu"
+                <Suspense fallback={<p>err..</p>}>
+                {isClient ?  (
+                  <CommentCount
+                  shortname="ece21"
                   config={{
                     url: pageURL,
                     identifier: item?.slug,
                     title: item?.title,
                   }}
-                />
+                />): "loading"}
+                </Suspense>
               </div>
 
-              <CardDescription>
-                {isClient ? (
-                  <CustomPortableText
-                    value={item?.overview as PortableTextBlock[]}
-                  />
-                ) : (
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-4 w-3/4" />
-                  </div>
-                )}
-              </CardDescription>
+              <Suspense fallback={<Skeleton className="h-4 w-full" />}>
+                {isClient ?  (
+                <CardDescription>
+                  {isClient ? (
+                    <CustomPortableText
+                      value={item?.overview as PortableTextBlock[]}
+                    />
+                  ) : (
+                    <div className="space-y-2">
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-3/4" />
+                    </div>
+                  )}
+                </CardDescription>): <Skeleton className="h-4 w-full" />}
+              </Suspense>
             </Card>
           </Link>
         ))}

@@ -4,11 +4,11 @@ import React from 'react'
 
 import { Vortex } from '@/components/ui/vortex'
 
-export function VortexUi() {
+export function VortexUi({url}: any) {
     const router = useRouter()
     const handleClick = () => {
-        const currentWindow = window.location.href
-        router.push(`${currentWindow}/gallery`)
+        // const currentWindow = window.location.href
+        router.push(`${url}/gallery`)
     }
   return (
     <div className="w-[calc(100%-4rem)] mx-auto rounded-md  h-[30rem] overflow-hidden">

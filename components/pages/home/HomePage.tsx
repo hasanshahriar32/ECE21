@@ -1,5 +1,6 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
 import Link from 'next/link'
+import { Suspense } from 'react'
 
 import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import AllProjects from '@/components/shared/allProjects'
@@ -52,7 +53,8 @@ export function HomePage({ data, data2, encodeDataAttribute }: HomePageProps) {
       <TimelineShowcase />
       <AllProjects data2={data2} />
       <Gemini />
-      <GlobeView />
+      <Suspense><GlobeView /></Suspense>
+      
     </div>
   )
 }

@@ -115,7 +115,7 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
         )}
       </div>
       <SocialShare />
-      <VortexUi />
+      <VortexUi url={data?.slug} />
       <div className="absolute left-0 w-screen my-6 border-t" />
       <DisqusLoader data={data} />
     </div>
