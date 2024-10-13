@@ -5,6 +5,7 @@ import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
+import { TimelineShowcase } from './TimelineShowcase'
 
 export interface HomePageProps {
   data: HomePagePayload | null
@@ -43,6 +44,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
           })}
         </div>
       )}
+      <TimelineShowcase />
     </div>
   )
 }

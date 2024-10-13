@@ -6,6 +6,7 @@ const config = {
       { hostname: 'cdn.sanity.io' },
       { hostname: 'source.unsplash.com' },
       { hostname: 'res.cloudinary.com' },
+      { hostname: 'assets.aceternity.com' },
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
