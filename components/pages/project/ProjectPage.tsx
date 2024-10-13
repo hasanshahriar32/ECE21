@@ -4,9 +4,11 @@ import Link from 'next/link'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
 import ImageBox from '@/components/shared/ImageBox'
+import SocialShare from '@/components/shared/socialShare'
 import type { ProjectPayload } from '@/types'
-import { VortexUi } from './VortexUi'
+
 import DisqusLoader from './DisqusLoader'
+import { VortexUi } from './VortexUi'
 
 export interface ProjectPageProps {
   data: ProjectPayload | null
@@ -112,6 +114,7 @@ export function ProjectPage({ data, encodeDataAttribute }: ProjectPageProps) {
           />
         )}
       </div>
+      <SocialShare />
       <VortexUi />
       <div className="absolute left-0 w-screen my-6 border-t" />
       <DisqusLoader data={data} />
