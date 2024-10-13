@@ -17,7 +17,7 @@ export function SparklesView() {
   }, [])
 
   return (
-    <div className="h-[40rem] gap-0 lg:gap-8 w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
+    <div className="h-[20rem] md:h-[30rem] lg:h-[40rem] gap-0 lg:gap-8 w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
       <Button
         className=" md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white z-20"
         size={'lg'}
