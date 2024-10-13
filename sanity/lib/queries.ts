@@ -26,6 +26,9 @@ export const ladderQuery = groq`
       "slug": slug.current,
       tags,
       title,
+      cloudinaryList,
+      duration
+
     },
     title,
   }

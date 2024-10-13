@@ -1,9 +1,9 @@
+import { EncodeDataAttributeCallback } from '@sanity/react-loader'
 import Image from 'next/image'
 import React, { Suspense } from 'react'
 
 import { Timeline } from '@/components/ui/timeline'
 import { LadderPayload } from '@/types'
-import { EncodeDataAttributeCallback } from '@sanity/react-loader'
 
 export function TimelineShowcase({data1, encodeDataAttribute1}: {data1:LadderPayload | null, encodeDataAttribute1?: EncodeDataAttributeCallback
 }) {

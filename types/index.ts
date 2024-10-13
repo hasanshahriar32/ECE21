@@ -25,6 +25,11 @@ export interface ShowcaseProject {
   slug?: string
   tags?: string[]
   title?: string
+  duration?: {
+    start?: string
+    end?: string
+  }
+  cloudinaryList?: any
 }
 
 // Page payloads

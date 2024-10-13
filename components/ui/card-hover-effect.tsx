@@ -65,7 +65,7 @@ export const HoverEffect = ({
   return (
     <div
       suppressHydrationWarning
-      className="mt-5  rounded-xl border border-slate-300 p-3 "
+      className="mt-5 z-10  rounded-xl border border-slate-300 p-3 "
     >
       <div
         className={cn(
