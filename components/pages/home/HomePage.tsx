@@ -6,6 +6,7 @@ import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
 import { TimelineShowcase } from './TimelineShowcase'
+import { SparklesView } from './SparklesView'
 
 export interface HomePageProps {
   data: HomePagePayload | null
@@ -45,6 +46,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
         </div>
       )}
       <TimelineShowcase />
+      <SparklesView />
     </div>
   )
 }
