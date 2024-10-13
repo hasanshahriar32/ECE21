@@ -4,19 +4,20 @@ import Link from 'next/link'
 
 import { HomePage } from '@/components/pages/home/HomePage'
 import { studioUrl } from '@/sanity/lib/api'
-import { loadAllProject,loadHomePage } from '@/sanity/loader/loadQuery'
+import { loadAllProject,loadHomePage, loadLadder } from '@/sanity/loader/loadQuery'
 const HomePagePreview = dynamic(
   () => import('@/components/pages/home/HomePagePreview'),
 )
 
 export default async function IndexRoute() {
   const initial = await loadHomePage()
+  const initial1 = await loadLadder()
   const page = 1 // specify the desired page number
   const limit = 100 // specify the number of items per page
   const initial2 = await loadAllProject(page, limit)
 
   if (draftMode().isEnabled) {
-    return <HomePagePreview initial={initial} />
+    return <HomePagePreview initial={initial} initial1={initial1} />
   }
 
   if (!initial.data) {
@@ -31,5 +32,5 @@ export default async function IndexRoute() {
     )
   }
 
-  return <HomePage data2={initial2?.data} data={initial.data} />
+  return <HomePage data2={initial2?.data} data1={initial1.data} data={initial.data} />
 }

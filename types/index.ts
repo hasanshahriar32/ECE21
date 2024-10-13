@@ -35,6 +35,12 @@ export interface HomePagePayload {
   showcaseProjects?: ShowcaseProject[]
   title?: string
 }
+export interface LadderPayload {
+  footer?: PortableTextBlock[]
+  overview?: PortableTextBlock[]
+  showcaseProjects?: ShowcaseProject[]
+  title?: string
+}
 
 export interface PagePayload {
   body?: PortableTextBlock[]

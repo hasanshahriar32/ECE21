@@ -6,7 +6,7 @@ import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import AllProjects from '@/components/shared/allProjects'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
-import type { HomePagePayload } from '@/types'
+import type { HomePagePayload, LadderPayload } from '@/types'
 
 import { Gemini } from './Gemini'
 import { GlobeView } from './GlobeView'
@@ -14,11 +14,19 @@ import { TimelineShowcase } from './TimelineShowcase'
 
 export interface HomePageProps {
   data: HomePagePayload | null
+  data1: LadderPayload | null
   data2: any
   encodeDataAttribute?: EncodeDataAttributeCallback
+  encodeDataAttribute1?: EncodeDataAttributeCallback
 }
 
-export function HomePage({ data, data2, encodeDataAttribute }: HomePageProps) {
+export function HomePage({
+  data,
+  data1,
+  data2,
+  encodeDataAttribute,
+  encodeDataAttribute1,
+}: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { overview = [], showcaseProjects = [], title = '' } = data ?? {}
 
@@ -50,11 +58,12 @@ export function HomePage({ data, data2, encodeDataAttribute }: HomePageProps) {
           })}
         </div>
       )}
-      <TimelineShowcase />
+      <TimelineShowcase data1={data1} encodeDataAttribute1={encodeDataAttribute1} />
       <AllProjects data2={data2} />
       <Gemini />
-      <Suspense><GlobeView /></Suspense>
-      
+      <Suspense>
+        <GlobeView />
+      </Suspense>
     </div>
   )
 }

@@ -15,6 +15,21 @@ export const homePageQuery = groq`
     title,
   }
 `
+export const ladderQuery = groq`
+  *[_type == "ladder"][0]{
+    _id,
+    overview,
+    showcaseProjects[]->{
+      _type,
+      coverImage,
+      overview,
+      "slug": slug.current,
+      tags,
+      title,
+    },
+    title,
+  }
+`
 
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {

@@ -1,9 +1,12 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { Timeline } from '@/components/ui/timeline'
+import { LadderPayload } from '@/types'
+import { EncodeDataAttributeCallback } from '@sanity/react-loader'
 
-export function TimelineShowcase() {
+export function TimelineShowcase({data1, encodeDataAttribute1}: {data1:LadderPayload | null, encodeDataAttribute1?: EncodeDataAttributeCallback
+}) {
   const data = [
     {
       title: '2024',
@@ -150,7 +153,13 @@ export function TimelineShowcase() {
   ]
   return (
     <div className="w-full">
-      <Timeline data={data} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Timeline
+          encodeDataAttribute1={encodeDataAttribute1}
+          data={data}
+          data1={data1}
+        />
+      </Suspense>
     </div>
   )
 }

@@ -7,6 +7,7 @@ import { client } from '@/sanity/lib/client'
 import {
   allProjectSlugQuery,
   homePageQuery,
+  ladderQuery,
   pagesBySlugQuery,
   projectBySlugQuery,
   settingsQuery,
@@ -14,6 +15,7 @@ import {
 import { token } from '@/sanity/lib/token'
 import {
   HomePagePayload,
+  LadderPayload,
   PagePayload,
   ProjectPayload,
   SettingsPayload,
@@ -76,6 +78,14 @@ export function loadHomePage() {
     homePageQuery,
     {},
     { next: { tags: ['home', 'project'] } },
+  )
+}
+
+export function loadLadder() {
+  return loadQuery<LadderPayload | null>(
+    ladderQuery,
+    {},
+    { next: { tags: ['ladder', 'project'] } },
   )
 }
 

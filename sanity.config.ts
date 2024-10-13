@@ -22,6 +22,8 @@ import timeline from '@/sanity/schemas/objects/timeline'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 
+import ladder from './sanity/schemas/singletons/ladder'
+
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
   'ঋণাত্মক - ২১ - HSTU ECE 21 Batch'
@@ -37,6 +39,7 @@ export default defineConfig({
       // Singletons
       home,
       settings,
+      ladder,
       // Documents
       duration,
       page,
@@ -50,7 +53,7 @@ export default defineConfig({
     cloudinaryAssetSourcePlugin(),
     cloudinarySchemaPlugin(),
     structureTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([home, ladder, settings]),
     }),
     presentationTool({
       resolve,
@@ -61,7 +64,7 @@ export default defineConfig({
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name]),
+    singletonPlugin([home.name, ladder.name, settings.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

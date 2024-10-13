@@ -1,11 +1,12 @@
 import { DocumentIcon, ImageIcon } from '@sanity/icons'
+import { DockIcon } from 'lucide-react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'project',
   title: 'Project',
   type: 'document',
-  icon: DocumentIcon,
+  icon: DockIcon,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
@@ -81,6 +82,9 @@ export default defineType({
       name: 'duration',
       title: 'Duration',
       type: 'duration',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'client',
