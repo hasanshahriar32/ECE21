@@ -1,7 +1,10 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { motion, MotionValue } from "framer-motion";
 import React from "react";
+
+import PwaInstall from '@/components/pwa-install'
+import { cn } from "@/lib/utils";
+
 import { Button } from "./button";
 
 const transition = {
@@ -21,19 +24,16 @@ export const GoogleGeminiEffect = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("sticky top-80", className)}>
+    <div className={cn('sticky top-80', className)}>
       <p className="text-lg md:text-7xl font-normal pb-4 text-center bg-clip-text bg-gradient-to-b from-neutral-100 to-neutral-300">
-        {title || `Build with Aceternity UI`}
+        Let&apos;s stay connected
       </p>
       <p className="text-xs md:text-xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">
         {description ||
-          `Scroll this component and see the bottom SVG come to life wow this
-        works!`}
+          `Install the app on your device for an optimal experience. You can also contact us via email.`}
       </p>
-      <div className="w-full h-[890px] -top-60 md:-top-48  flex items-center justify-center bg-red-transparent absolute ">
-        <Button variant={"default"} size={"lg"} className=" md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 w-fit mx-auto ">
-          Get Our App
-        </Button>
+      <div className="w-full h-[890px] -top-60 md:-top-48 z-30  flex items-center justify-center bg-red-transparent absolute ">
+        <PwaInstall />
       </div>
       <svg
         width="1440"
@@ -158,5 +158,5 @@ export const GoogleGeminiEffect = ({
         </defs>
       </svg>
     </div>
-  );
+  )
 };

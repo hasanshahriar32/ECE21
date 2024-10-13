@@ -5,8 +5,8 @@
   "name": "HSTU ECE21",
   "short_name": "RINATTOK21",
   "description": "Documentary of HSTU ECE21 Batch. A project by Shahriar Hasan.",
-  "theme_color": "#FFFFFF",
-  "background_color": "#000000",
+  "theme_color": "#000000",
+  "background_color": "#FFFFFF",
   "icons": [
     {
       "src": "AppImages/android/android-launchericon-192-192.png",
