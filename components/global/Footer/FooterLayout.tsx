@@ -3,6 +3,7 @@ import type { PortableTextBlock } from 'next-sanity'
 import { CustomPortableText } from '@/components//shared/CustomPortableText'
 import type { SettingsPayload } from '@/types'
 import GTranslate from './gTranslate'
+import ChatWidget from '@/components/shared/ChatWidget'
 
 interface FooterProps {
   data: SettingsPayload
@@ -20,6 +21,7 @@ export default function Footer(props: FooterProps) {
       )}
       <div className="flex w-full flex-row flex-wrap items-center justify-center">
         <GTranslate />
+        <ChatWidget />
       </div>
     </footer>
   )
