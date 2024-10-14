@@ -63,19 +63,19 @@ const PwaInstall = () => {
     <div>
       <Button
         onClick={handleInstallClick}
-        variant={'default'}
+        variant={'outline'}
         size={'lg'}
         style={{ display: deferredPrompt ? 'block' : 'none' }}
-        className=" md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 w-fit mx-auto "
+        className="backdrop-blur-xl md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 w-fit mx-auto "
       >
         Get Our App
       </Button>
       <Button
         onClick={handleEmailOpen}
-        variant={'default'}
+        variant={'outline'}
         size={'lg'}
         style={{ display: deferredPrompt ? 'none' : 'block' }}
-        className=" md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 w-fit mx-auto "
+        className="backdrop-blur-xl md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 w-fit mx-auto "
       >
         Contact Us
       </Button>
