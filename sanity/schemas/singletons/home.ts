@@ -71,6 +71,22 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      title: 'Seo',
+      name: 'seo',
+      type: 'seoMetaFields',
+      preview: {
+        select: {
+          metaTitle: 'seo',
+        },
+        prepare(selection) {
+          const { metaTitle } = selection?.metaTitle || ''
+          return {
+            title: metaTitle || 'seo',
+          }
+        },
+      },
+    }),
   ],
   preview: {
     select: {

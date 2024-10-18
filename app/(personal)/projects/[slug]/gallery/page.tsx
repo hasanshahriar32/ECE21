@@ -3,17 +3,21 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from 'next/image';
 
+import CustomNextSeo from '@/components/global/CustomNextSeo';
 import Gallery from "@/components/pages/project/Gallery";
 import { loadProject } from "@/sanity/loader/loadQuery";
+import { SeoType } from '@/types';
 
 import Bridge from "../../../../../components/Icons/Bridge"
 
 
 type Props = {
-  params: { slug: string }
+  params: { slug: string },
+  SeoData: SeoType
 }
 
-const Home: NextPage = async ({ params }: Props,) => {
+const GalleryPage: NextPage = async ({ params , SeoData}: Props,) => {
+  console.log(params)
   const initial = await loadProject(params.slug)
   const currentURL = `https://ece21.vercel.app/projects/${params.slug}/gallery`
   const handleSocialShare = (socialPlatform: any) => {
@@ -25,24 +29,7 @@ const Home: NextPage = async ({ params }: Props,) => {
   }
 
   return (
-    <>
-      <Head>
-        <title>ঋণাত্মক - ২১: Images</title>
-        <meta
-          property="og:image"
-          content={
-            `${initial?.data?.cloudinaryList[0]?.secure_url}` ||
-            '/image/screenshot.png'
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={
-            `${initial?.data?.cloudinaryList[0]?.secure_url}` ||
-            '/image/screenshot.png'
-          }
-        />
-      </Head>
+    <CustomNextSeo seo={SeoData} slug={params?.slug}>
       <main className="mx-auto max-w-[1960px] p-4">
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
           <div className="after:content border-spacing-2 border relative mb-5 flex h-[540px] md:[h-600px] lg:h-[650px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/90 px-6 pb-16 pt-64 text-center shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
@@ -124,9 +111,9 @@ const Home: NextPage = async ({ params }: Props,) => {
         </a>{' '}
         for the pictures.
       </footer>
-    </>
+    </CustomNextSeo>
   )
 }
 
-export default Home;
+export default GalleryPage;
 

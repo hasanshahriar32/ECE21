@@ -29,14 +29,11 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-          
-      type: "array",
-      name: "cloudinaryList",
-      description: "Select images to add to the gallery. (not mandetory)",
-      of: [{ type: "cloudinary.asset" }],
-      title: "Gallery",
-
-  
+      type: 'array',
+      name: 'cloudinaryList',
+      description: 'Select images to add to the gallery. (not mandetory)',
+      of: [{ type: 'cloudinary.asset' }],
+      title: 'Gallery',
     }),
     defineField({
       name: 'overview',
@@ -165,6 +162,22 @@ export default defineType({
           ],
         }),
       ],
+    }),
+    defineField({
+      title: 'Seo',
+      name: 'seo',
+      type: 'seoMetaFields',
+      preview: {
+        select: {
+          metaTitle: 'seo',
+        },
+        prepare(selection) {
+          const { metaTitle } = selection?.metaTitle || ''
+          return {
+            title: metaTitle || 'seo',
+          }
+        },
+      },
     }),
   ],
 })
