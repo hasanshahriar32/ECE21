@@ -1,3 +1,4 @@
+"use client"
 import { NextSeo } from 'next-seo'
 import {
   MetaTag as NextSeoMetaTag,
