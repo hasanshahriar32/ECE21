@@ -35,6 +35,7 @@ export interface ShowcaseProject {
 // Page payloads
 
 export interface HomePagePayload {
+  seo?: SeoType
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
   showcaseProjects?: ShowcaseProject[]
@@ -49,6 +50,7 @@ export interface LadderPayload {
 
 export interface PagePayload {
   body?: PortableTextBlock[]
+  seo?: SeoType
   name?: string
   overview?: PortableTextBlock[]
   title?: string
@@ -57,6 +59,7 @@ export interface PagePayload {
 
 export interface ProjectPayload {
   client?: string
+  seo?: SeoType
   coverImage?: Image
   description?: PortableTextBlock[]
   cloudinaryList?: any
