@@ -10,6 +10,7 @@ import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { cloudinaryAssetSourcePlugin } from 'sanity-plugin-cloudinary'
 import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
+import { seoMetaFields } from 'sanity-plugin-seo'
 
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import * as resolve from '@/sanity/plugins/resolve'
@@ -51,6 +52,7 @@ export default defineConfig({
   },
   plugins: [
     cloudinaryAssetSourcePlugin(),
+    seoMetaFields(),
     cloudinarySchemaPlugin(),
     structureTool({
       structure: pageStructure([home, ladder, settings]),
