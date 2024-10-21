@@ -20,7 +20,10 @@ export default function Navbar(props: NavbarProps) {
         >
           ঋণাত্মক-২১
         </Link>
-        <Link className="hidden md:block text-lg text-gray-600 md:text-xl" href="/studio">
+        <Link
+          className="hidden md:block text-lg text-gray-600 md:text-xl"
+          href="/studio/structure"
+        >
           Studio
         </Link>
       </div>

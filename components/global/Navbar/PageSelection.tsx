@@ -137,7 +137,7 @@ function StatusList({
               // setSelectedStatus(
               //   menuItems.find((priority: any) => priority.title === value) || null,
               // );
-              router.push(`/studio`)
+              router.push(`/studio/structure`)
               // console.log(href)
               setOpen(false)
             }}
