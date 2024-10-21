@@ -1,3 +1,6 @@
+import 'katex/dist/katex.min.css' // Import the KaTeX CSS for styling
+
+import katex from 'katex'
 import {
   PortableText,
   type PortableTextBlock,
@@ -7,13 +10,6 @@ import type { Image } from 'sanity'
 
 import ImageBox from '@/components/shared/ImageBox'
 import { TimelineSection } from '@/components/shared/TimelineSection'
-
-const mathInlineIcon = () => (
-  <span>
-    <span style={{ fontWeight: 'bold' }}>∑</span>b
-  </span>
-)
-const mathIcon = () => <span style={{ fontWeight: 'bold' }}>∑</span>
 
 export function CustomPortableText({
   paragraphClasses,
@@ -65,6 +61,50 @@ export function CustomPortableText({
       timeline: ({ value }) => {
         const { items } = value || {}
         return <TimelineSection timelines={items} />
+      },
+      latexEquation: ({ value }) => {
+        const renderEquation = (equation: any) => {
+          if (equation._type === 'latex') {
+            return (
+              <div key={equation._key} className="my-4">
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: katex.renderToString(equation.body, {
+                      throwOnError: false,
+                    }),
+                  }}
+                />
+              </div>
+            )
+          } else if (equation._type === 'block') {
+            return (
+              <div key={equation._key} className="my-4">
+                {equation.children.map((child: any) => {
+                  if (child._type === 'span') {
+                    return <span key={child._key}>{child.text}</span>
+                  } else if (child._type === 'latex') {
+                    return (
+                      <span
+                        key={child._key}
+                        dangerouslySetInnerHTML={{
+                          __html: katex.renderToString(child.body, {
+                            throwOnError: false,
+                          }),
+                        }}
+                      />
+                    )
+                  }
+                  return null
+                })}
+              </div>
+            )
+          }
+          return null
+        }
+
+        return (
+          <div>{value?.equation?.map((item: any) => renderEquation(item))}</div>
+        )
       },
     },
   }

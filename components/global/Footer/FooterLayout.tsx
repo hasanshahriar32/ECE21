@@ -1,9 +1,10 @@
 import type { PortableTextBlock } from 'next-sanity'
 
 import { CustomPortableText } from '@/components//shared/CustomPortableText'
-import type { SettingsPayload } from '@/types'
-import GTranslate from './gTranslate'
 import ChatWidget from '@/components/shared/ChatWidget'
+import type { SettingsPayload } from '@/types'
+
+import GTranslate from './gTranslate'
 
 interface FooterProps {
   data: SettingsPayload

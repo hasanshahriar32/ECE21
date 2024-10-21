@@ -18,7 +18,7 @@ export default defineType({
           title: 'Block',
           of: [{ type: 'latex', icon: CalculatorIcon, title: 'Inline math' }],
         },
-        { type: 'latex', icon: CalculatorIcon, title: 'Math block' },
+        { type: 'latex', icon: Calculator, title: 'Math block' },
       ],
       options: {
         layout: 'tags',
