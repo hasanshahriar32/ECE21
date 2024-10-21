@@ -8,6 +8,13 @@ import type { Image } from 'sanity'
 import ImageBox from '@/components/shared/ImageBox'
 import { TimelineSection } from '@/components/shared/TimelineSection'
 
+const mathInlineIcon = () => (
+  <span>
+    <span style={{ fontWeight: 'bold' }}>∑</span>b
+  </span>
+)
+const mathIcon = () => <span style={{ fontWeight: 'bold' }}>∑</span>
+
 export function CustomPortableText({
   paragraphClasses,
   value,

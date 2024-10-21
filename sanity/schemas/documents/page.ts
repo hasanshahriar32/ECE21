@@ -85,6 +85,10 @@ export default defineType({
           type: 'timeline',
         }),
         defineField({
+          name: 'latexEquation',
+          type: 'latexEquation',
+        }),
+        defineField({
           type: 'image',
           icon: ImageIcon,
           name: 'image',

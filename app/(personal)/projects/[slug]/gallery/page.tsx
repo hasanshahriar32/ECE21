@@ -13,12 +13,11 @@ import Bridge from "../../../../../components/Icons/Bridge"
 
 type Props = {
   params: { slug: string },
-  SeoData: SeoType
 }
 
-const GalleryPage: NextPage = async ({ params , SeoData}: Props,) => {
-  console.log(params)
+const GalleryPage: NextPage = async ({ params }: Props,) => {
   const initial = await loadProject(params.slug)
+  // console.log(initial)
   const currentURL = `https://ece21.vercel.app/projects/${params.slug}/gallery`
   const handleSocialShare = (socialPlatform: any) => {
     // Replace this with your custom share functionality
@@ -29,7 +28,7 @@ const GalleryPage: NextPage = async ({ params , SeoData}: Props,) => {
   }
 
   return (
-    <CustomNextSeo seo={SeoData} slug={params?.slug}>
+    <CustomNextSeo seo={initial?.data?.seo ?? null} slug={params?.slug}>
       <main className="mx-auto max-w-[1960px] p-4">
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
           <div className="after:content border-spacing-2 border relative mb-5 flex h-[540px] md:[h-600px] lg:h-[650px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/90 px-6 pb-16 pt-64 text-center shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
@@ -81,7 +80,7 @@ const GalleryPage: NextPage = async ({ params , SeoData}: Props,) => {
           <Gallery data={initial?.data} />
         </div>
       </main>
-      <footer className="p-6 text-center text-white/80 sm:p-12">
+      {/* <footer className="p-6 text-center text-white/80 sm:p-12">
         Thank you to{' '}
         <a
           href="https://edelsonphotography.com/"
@@ -110,7 +109,7 @@ const GalleryPage: NextPage = async ({ params , SeoData}: Props,) => {
           Gary Sexton
         </a>{' '}
         for the pictures.
-      </footer>
+      </footer> */}
     </CustomNextSeo>
   )
 }

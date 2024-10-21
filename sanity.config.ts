@@ -8,8 +8,9 @@ import { defineConfig } from 'sanity'
 import { presentationTool } from 'sanity/presentation'
 import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { cloudinaryAssetSourcePlugin } from 'sanity-plugin-cloudinary'
+import { cloudinaryAssetSourcePlugin, cloudinaryImageSource } from 'sanity-plugin-cloudinary'
 import { cloudinarySchemaPlugin } from 'sanity-plugin-cloudinary'
+import { latexInput } from 'sanity-plugin-latex-input'
 import { seoMetaFields } from 'sanity-plugin-seo'
 
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
@@ -18,6 +19,7 @@ import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
 import page from '@/sanity/schemas/documents/page'
 import project from '@/sanity/schemas/documents/project'
 import duration from '@/sanity/schemas/objects/duration'
+import latexEquation from '@/sanity/schemas/objects/latexEquation'
 import milestone from '@/sanity/schemas/objects/milestone'
 import timeline from '@/sanity/schemas/objects/timeline'
 import home from '@/sanity/schemas/singletons/home'
@@ -48,11 +50,13 @@ export default defineConfig({
       // Objects
       milestone,
       timeline,
+      latexEquation
     ],
   },
   plugins: [
     cloudinaryAssetSourcePlugin(),
     seoMetaFields(),
+    latexInput(),
     cloudinarySchemaPlugin(),
     structureTool({
       structure: pageStructure([home, ladder, settings]),
